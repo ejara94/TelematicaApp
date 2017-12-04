@@ -6,7 +6,7 @@ Proyecto actualmente compilando .apk con la API 26 de Android Studio
 
 Cuenta Firebase:
 	User: telematica.app@gmail.com
-	Pass: pacog*rt**xist*
+	Pass: ***************
 
 Comandos útiles Ionic + Cordova:
 
