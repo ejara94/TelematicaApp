@@ -19,22 +19,25 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-  console.log('ionViewDidLoad HomePage');
-  this.afAuth.authState.subscribe(data => {
-    if(data && data.email && data.uid){
-      this.toast.create({
-        message: `Welcome to Telematica App, ${data.email}`,
-        duration: 3000
-      }).present();
-    }
-    else{
-      this.toast.create({
-        message: `No se pudo acceder a la informacion del usuario`,
-        duration: 3000
-      }).present();
-    }
+    console.log('ionViewDidLoad HomePage');
+    this.afAuth.authState.subscribe(data => {
+      if(data && data.email && data.uid){
+        this.toast.create({
+          message: `Welcome to Telematica App, ${data.email}`,
+          duration: 3000
+        }).present();
+      }
+      else{
+        this.toast.create({
+          message: `No se pudo acceder a la informacion del usuario`,
+          duration: 3000
+        }).present();
+      }
+    });
+  }
 
-  });
-}
+  verSalas() {
+    this.navCtrl.push('RoomsPage'); //te lleva a la página de registro
+  }
 
 }

@@ -1,0 +1,28 @@
+<!--
+  Generated template for the RoomsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="azul-1">
+    <ion-title> Salas </ion-title>
+    <ion-buttons end>
+      <button navPush="AddRoomPage" ion-button>
+        <ion-icon name="add">  </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header> Lista de Salas </ion-list-header>
+    <ion-item *ngFor="let room of roomsList$ | async">
+      {{room.titulo}} 
+    </ion-item>
+  </ion-list>
+</ion-content>

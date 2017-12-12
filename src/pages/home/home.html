@@ -1,18 +1,34 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="azul-1">
+    <ion-title> HomePage </ion-title>
   </ion-navbar>
+
+  <ion-toolbar color="plomo-2">
+    <ion-title>My Toolbar Title</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="plomo-2">
+    <button ion-button (click)="verSalas()"> Ver Salas </button>
+  </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-toolbar color="azul-3">
+    <ion-title>Scrolls with the content</ion-title>
+  </ion-toolbar>
 </ion-content>
+
+
+<ion-footer no-border>
+    <ion-toolbar color="plomo-3">
+    <ion-title>I'm a footer</ion-title>
+  </ion-toolbar>
+</ion-footer>
