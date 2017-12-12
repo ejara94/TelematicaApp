@@ -9,20 +9,26 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule} from "angularfire2/auth";
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+//    HomePage,
     ListPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+//    HomePage,
     ListPage
   ],
   providers: [
