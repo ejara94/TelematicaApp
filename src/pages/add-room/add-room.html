@@ -1,0 +1,33 @@
+<!--
+  Generated template for the AddRoomPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="azul-1">
+    <ion-title> Añadir Sala </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label> Nombre: </ion-label>
+    <ion-input [(ngModel)]="room.titulo" type="text" placeholder="Sala 1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label> Admin: </ion-label>
+    <ion-input [(ngModel)]="room.admin" type="text" placeholder="chauder"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label> Contenido: </ion-label>
+    <ion-input [(ngModel)]="room.descripcion" type="text" placeholder="aguante san luis"></ion-input>
+  </ion-item>
+
+  <button ion-button block clear (click)="addRoom(room)"> Añadir </button>
+
+</ion-content>

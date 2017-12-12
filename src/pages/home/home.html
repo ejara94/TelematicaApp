@@ -4,15 +4,31 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>HomePage</ion-title>
+<ion-header>
+  <ion-navbar color="azul-1">
+    <ion-title> HomePage </ion-title>
   </ion-navbar>
 
+  <ion-toolbar color="plomo-2">
+    <ion-title>My Toolbar Title</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="plomo-2">
+    <button ion-button (click)="verSalas()"> Ver Salas </button>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-toolbar color="azul-3">
+    <ion-title>Scrolls with the content</ion-title>
+  </ion-toolbar>
 </ion-content>
+
+
+<ion-footer no-border>
+    <ion-toolbar color="plomo-3">
+    <ion-title>I'm a footer</ion-title>
+  </ion-toolbar>
+</ion-footer>

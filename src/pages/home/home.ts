@@ -35,8 +35,11 @@ export class HomePage {
           duration: 3000
         }).present();
       }
-
     });
+  }
+
+  verSalas() {
+    this.navCtrl.push('RoomsPage'); //te lleva a la página de registro
   }
 
 }
