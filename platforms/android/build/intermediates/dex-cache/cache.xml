@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/paco/Escritorio/TelematicaApp/platforms/android/build/intermediates/exploded-aar/org.apache.cordova/CordovaLib/6.3.0/debug/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="27.0.1"
+        sha1="394ba2d1c4f9d04f3e430041b41d498abaacfc64">
+        <dex dex="/home/paco/Escritorio/TelematicaApp/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-6.3.0-debug_8b08e5ef3565f489dfb8da83ea646bab647c868a.jar" />
+    </item>
+
+</items>

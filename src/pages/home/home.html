@@ -6,24 +6,34 @@
 -->
 
 <ion-header>
+
   <ion-navbar color="azul-1">
     <ion-title> HomePage </ion-title>
   </ion-navbar>
 
   <ion-toolbar color="plomo-2">
-    <ion-title>My Toolbar Title</ion-title>
-  </ion-toolbar>
-
-  <ion-toolbar color="plomo-2">
     <button ion-button (click)="verSalas()"> Ver Salas </button>
   </ion-toolbar>
+
 </ion-header>
 
 
 <ion-content padding>
-  <ion-toolbar color="azul-3">
-    <ion-title>Scrolls with the content</ion-title>
-  </ion-toolbar>
+
+  <ion-card>
+    <img width="200px" height="200px" src="assets/imgs/diftel.jpg"/>
+    <div class="card-title"> DifTel </div>
+    <div class="card-subtitle"> Puertas Abiertas 2016 </div>
+    <ion-buttons end>
+      <button navPush="RoomPage" ion-button> ir </button>
+    </ion-buttons>
+  </ion-card>
+  <ion-card>
+    <img width="200px" height="200px" src="assets/imgs/ceeTel.jpg"/>
+    <div class="card-title"> CEETel </div>
+    <div class="card-subtitle"> Centro de alumnos 2016 </div>
+  </ion-card>
+
 </ion-content>
 
 
