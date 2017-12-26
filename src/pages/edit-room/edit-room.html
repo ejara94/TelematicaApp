@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{room?.titulo}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label> Nombre: </ion-label>
+    <ion-input [(ngModel)]="room.titulo" type="text" placeholder="Sala 1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label> Admin: </ion-label>
+    <ion-input [(ngModel)]="room.admin" type="text" placeholder="chauder"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label> Contenido: </ion-label>
+    <ion-input [(ngModel)]="room.descripcion" type="text" placeholder="aguante san luis"></ion-input>
+  </ion-item>
+
+  <button ion-button block clear (click)="saveRoom(room)"> Save </button>
+  <button ion-button block clear color="danger" (click)="removeRoom(room)"> Delete </button>
+
+</ion-content>

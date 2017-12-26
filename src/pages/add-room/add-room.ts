@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { RoomsService } from "./../../services/rooms/rooms.service";
+
 
 import { Room } from "../../models/room/room.model";
+import { RoomsService } from "./../../services/rooms/rooms.service";
 
-/**
- * Generated class for the AddRoomPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ToastService } from "./../../services/toast/toast.service";
+
 
 @IonicPage()
 @Component({
@@ -23,7 +20,8 @@ export class AddRoomPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private rooms: RoomsService
+    private rooms: RoomsService,
+    private toast: ToastService,
   ) {}
 
   ionViewDidLoad() {
@@ -32,7 +30,9 @@ export class AddRoomPage {
 
   addRoom(room: Room){
     this.rooms.addRoom(room).then(ref => {
-      this.navCtrl.setRoot("HomePage", { key: ref.key });
+      this.toast.show(`${room.titulo} added!`);
+      this.navCtrl.setRoot("RoomsPage", { key: ref.key });
     });
   }
+
 }

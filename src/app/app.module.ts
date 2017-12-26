@@ -14,6 +14,8 @@ import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { RoomsService } from "./../services/rooms/rooms.service";
+import { ToastService } from "./../services/toast/toast.service";
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { RoomsService } from "./../services/rooms/rooms.service";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RoomsService
+    RoomsService,
+    ToastService,
   ]
 })
 export class AppModule {}

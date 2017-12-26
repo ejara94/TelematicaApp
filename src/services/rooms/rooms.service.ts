@@ -18,4 +18,11 @@ export class RoomsService {
     return this.roomsRef.push(room);
   }
 
+  editRoom(room: Room){
+    return this.roomsRef.update(room.key, room);
+  }
+  removeRoom(room: Room){
+    return this.roomsRef.remove(room.key);
+  }
+
 }

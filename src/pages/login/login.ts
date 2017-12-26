@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,
+  LoadingController, Loading, AlertController } from 'ionic-angular';
+
 import { User } from "../../models/user";
 import { AngularFireAuth } from 'angularfire2/auth';
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -17,27 +13,58 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class LoginPage {
 
   user = {} as User;
+  public loading:Loading;
 
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    private afAuth: AngularFireAuth,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
-    //limpiar usuaro registrado
+    //limpiar usuario registrado
     this.afAuth.auth.signOut();
   }
 
   async login(user: User) {
+    this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password).then(() => {
+      console.log("User logging");
+      this.navCtrl.setRoot('HomePage');
+    }, (err) => {
+      this.loading.dismiss().then( () => {
+        let alert = this.alertCtrl.create({
+          message: err.message,
+          buttons: [
+            {
+              text: "Ok",
+              role: 'cancel'
+            }
+          ]
+        });
+        alert.present();
+      });
+    });
+
+    this.loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+    });
+    this.loading.present();
+
+    /*
     try{
     //autenticacion con firebase
-      const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-      //console.log(result);
+      const result = this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(user.email, user.password);
+      console.log(result);/*
       if(result){
         this.navCtrl.setRoot('HomePage');
-    }
+      }
     }catch(e){
     console.error(e);
     }
+    */
   }
 
   register() {
