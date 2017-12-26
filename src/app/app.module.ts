@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -13,14 +13,16 @@ import { MyApp } from './app.component';
 // import { HomePage } from '../pages/home/home';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
+import { AuthService } from "./../services/authService";
 import { RoomsService } from "./../services/rooms/rooms.service";
 import { ToastService } from "./../services/toast/toast.service";
+
 
 
 @NgModule({
   declarations: [
     MyApp,
-//    HomePage,
+//  HomePage,
     ListPage
   ],
   imports: [
@@ -33,7 +35,7 @@ import { ToastService } from "./../services/toast/toast.service";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-//    HomePage,
+//  HomePage,
     ListPage
   ],
   providers: [
@@ -42,6 +44,7 @@ import { ToastService } from "./../services/toast/toast.service";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RoomsService,
     ToastService,
+    AuthService,
   ]
 })
 export class AppModule {}

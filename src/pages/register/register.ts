@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { User } from "../../models/user";
-import { AngularFireAuth } from "angularfire2/auth";
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, LoadingController, AlertController } from 'ionic-angular';
+
+import { User } from "./../../models/user";
+import { AuthService } from './../../services/authService';
 
 @IonicPage()
 @Component({
@@ -18,23 +13,38 @@ export class RegisterPage {
 
   user = {} as User;
 
-  constructor(private afAuth : AngularFireAuth, public navCtrl: NavController,
-     public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,
+    public authService: AuthService
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-async  register(user: User){
-  try{
-    const result = await this.afAuth.auth.
-    createUserWithEmailAndPassword(user.email, user.password);
-    console.log('Soy un lindo ConsoleLog e.e');
-    console.log(result);
+  async register(user: User){
+    let loading = this.loadingCtrl.create({
+      content: 'Creando cuenta. Por favor, espere...'
+    });
+    loading.present();
+
+    this.authService.registerUser(user).then(result => {
+      loading.dismiss();
+      this.navCtrl.push('LoginPage');
+    }).catch(error => {
+      loading.dismiss();
+      this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
+    });
   }
-  catch (e){
-    console.error(e);
+
+  alert(title: string, message: string){
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
-}
 }
