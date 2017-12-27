@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar color="azul-1">
-    <ion-title> Salas {{authService.currentUser}}</ion-title>
+    <ion-title> Salas </ion-title>
     <ion-buttons end>
       <button navPush="AddRoomPage" ion-button>
         <ion-icon name="add">  </ion-icon>
@@ -21,4 +21,5 @@
       {{room.titulo}}
     </ion-item>
   </ion-list>
+  <button ion-button (click)="isAdmin()"> Soy admin ? </button>
 </ion-content>

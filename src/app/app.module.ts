@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { AuthService } from "./../services/authService";
+import { AdminsService } from "./../services/adminsService";
 import { RoomsService } from "./../services/rooms/rooms.service";
 import { ToastService } from "./../services/toast/toast.service";
 
@@ -45,6 +46,7 @@ import { ToastService } from "./../services/toast/toast.service";
     RoomsService,
     ToastService,
     AuthService,
+    AdminsService,
   ]
 })
 export class AppModule {}

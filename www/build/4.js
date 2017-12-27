@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 453:
+/***/ 454:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditRoomPageModule", function() { return EditRoomPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddRoomPageModule", function() { return AddRoomPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_room__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_room__ = __webpack_require__(461);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EditRoomPageModule = (function () {
-    function EditRoomPageModule() {
+var AddRoomPageModule = (function () {
+    function AddRoomPageModule() {
     }
-    EditRoomPageModule = __decorate([
+    AddRoomPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__edit_room__["a" /* EditRoomPage */],
+                __WEBPACK_IMPORTED_MODULE_2__add_room__["a" /* AddRoomPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_room__["a" /* EditRoomPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_room__["a" /* AddRoomPage */]),
             ],
         })
-    ], EditRoomPageModule);
-    return EditRoomPageModule;
+    ], AddRoomPageModule);
+    return AddRoomPageModule;
 }());
 
-//# sourceMappingURL=edit-room.module.js.map
+//# sourceMappingURL=add-room.module.js.map
 
 /***/ }),
 
-/***/ 460:
+/***/ 461:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditRoomPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddRoomPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_rooms_rooms_service__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_toast_toast_service__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_rooms_rooms_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_toast_toast_service__ = __webpack_require__(286);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,43 +60,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var EditRoomPage = (function () {
-    function EditRoomPage(navCtrl, navParams, rooms, toast) {
+var AddRoomPage = (function () {
+    function AddRoomPage(navCtrl, navParams, rooms, toast) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.rooms = rooms;
         this.toast = toast;
+        this.room = {};
     }
-    EditRoomPage.prototype.ionViewWillLoad = function () {
-        this.room = this.navParams.get('room');
+    AddRoomPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AddRoomPage');
     };
-    EditRoomPage.prototype.saveRoom = function (room) {
+    AddRoomPage.prototype.addRoom = function (room) {
         var _this = this;
-        this.rooms.editRoom(room).then(function () {
-            _this.toast.show(room.titulo + " saved!");
-            _this.navCtrl.setRoot('RoomsPage');
+        this.rooms.addRoom(room).then(function (ref) {
+            _this.toast.show(room.titulo + " added!");
+            _this.navCtrl.setRoot("RoomsPage", { key: ref.key });
         });
     };
-    EditRoomPage.prototype.removeRoom = function (room) {
-        var _this = this;
-        this.rooms.removeRoom(room).then(function () {
-            _this.toast.show(room.titulo + " deleted!");
-            _this.navCtrl.setRoot('RoomsPage');
-        });
-    };
-    EditRoomPage = __decorate([
+    AddRoomPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-edit-room',template:/*ion-inline-start:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/edit-room/edit-room.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{room?.titulo}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label> Nombre: </ion-label>\n    <ion-input [(ngModel)]="room.titulo" type="text" placeholder="Sala 1"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label> Admin: </ion-label>\n    <ion-input [(ngModel)]="room.admin" type="text" placeholder="chauder"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label> Contenido: </ion-label>\n    <ion-input [(ngModel)]="room.descripcion" type="text" placeholder="aguante san luis"></ion-input>\n  </ion-item>\n\n  <button ion-button block clear (click)="saveRoom(room)"> Save </button>\n  <button ion-button block clear color="danger" (click)="removeRoom(room)"> Delete </button>\n\n</ion-content>\n'/*ion-inline-end:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/edit-room/edit-room.html"*/,
+            selector: 'page-add-room',template:/*ion-inline-start:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/add-room/add-room.html"*/'<!--\n  Generated template for the AddRoomPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="azul-1">\n    <ion-title> Añadir Sala </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label> Nombre: </ion-label>\n    <ion-input [(ngModel)]="room.titulo" type="text" placeholder="Sala 1"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label> Admin: </ion-label>\n    <ion-input [(ngModel)]="room.admin" type="text" placeholder="chauder"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label> Contenido: </ion-label>\n    <ion-input [(ngModel)]="room.descripcion" type="text" placeholder="aguante san luis"></ion-input>\n  </ion-item>\n\n  <button ion-button block clear (click)="addRoom(room)"> Añadir </button>\n\n</ion-content>\n'/*ion-inline-end:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/add-room/add-room.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__services_rooms_rooms_service__["a" /* RoomsService */],
             __WEBPACK_IMPORTED_MODULE_3__services_toast_toast_service__["a" /* ToastService */]])
-    ], EditRoomPage);
-    return EditRoomPage;
+    ], AddRoomPage);
+    return AddRoomPage;
 }());
 
-//# sourceMappingURL=edit-room.js.map
+//# sourceMappingURL=add-room.js.map
 
 /***/ })
 

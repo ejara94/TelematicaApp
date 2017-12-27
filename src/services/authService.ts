@@ -23,4 +23,7 @@ export class AuthService {
   get currentUser(): string {
     return this.afAuth.auth.currentUser ? this.afAuth.auth.currentUser.email:null;
   }
+  get currentUser_Id(): string {
+    return this.afAuth.auth.currentUser.uid ? this.afAuth.auth.currentUser.uid :null;
+  }
 }

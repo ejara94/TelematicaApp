@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 456:
+/***/ 457:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(463);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RegisterPageModule = (function () {
-    function RegisterPageModule() {
+var LoginPageModule = (function () {
+    function LoginPageModule() {
     }
-    RegisterPageModule = __decorate([
+    LoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
             ],
         })
-    ], RegisterPageModule);
-    return RegisterPageModule;
+    ], LoginPageModule);
+    return LoginPageModule;
 }());
 
-//# sourceMappingURL=register.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 462:
+/***/ 463:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_authService__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_authService__ = __webpack_require__(76);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -93,38 +94,43 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var RegisterPage = (function () {
-    function RegisterPage(navCtrl, loadingCtrl, alertCtrl, authService) {
+
+var LoginPage = (function () {
+    function LoginPage(afAuth, navCtrl, navParams, alertCtrl, loadingCtrl, authService) {
+        this.afAuth = afAuth;
         this.navCtrl = navCtrl;
-        this.loadingCtrl = loadingCtrl;
+        this.navParams = navParams;
         this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
         this.authService = authService;
         this.user = {};
     }
-    RegisterPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RegisterPage');
+    LoginPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad LoginPage');
+        //limpiar usuario registrado
+        this.afAuth.auth.signOut();
     };
-    RegisterPage.prototype.register = function (user) {
+    LoginPage.prototype.login = function (user) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             var loading;
             return __generator(this, function (_a) {
                 loading = this.loadingCtrl.create({
-                    content: 'Creando cuenta. Por favor, espere...'
+                    content: 'Verificando. Por favor, espere...'
                 });
                 loading.present();
-                this.authService.registerUser(user).then(function (result) {
+                this.authService.loginWithEmail(user).then(function (result) {
                     loading.dismiss();
-                    _this.navCtrl.push('LoginPage');
+                    _this.navCtrl.setRoot('HomePage');
                 }).catch(function (error) {
                     loading.dismiss();
-                    _this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
+                    _this.alert('Error', error.message);
                 });
                 return [2 /*return*/];
             });
         });
     };
-    RegisterPage.prototype.alert = function (title, message) {
+    LoginPage.prototype.alert = function (title, message) {
         var alert = this.alertCtrl.create({
             title: title,
             subTitle: message,
@@ -132,19 +138,36 @@ var RegisterPage = (function () {
         });
         alert.present();
     };
-    RegisterPage = __decorate([
+    /*
+    try{
+    //autenticacion con firebase
+      const result = this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(user.email, user.password);
+      console.log(result);/*
+      if(result){
+        this.navCtrl.setRoot('HomePage');
+      }
+    }catch(e){
+    console.error(e);
+    }
+    */
+    LoginPage.prototype.register = function () {
+        this.navCtrl.push('RegisterPage'); //te lleva a la página de registro
+    };
+    LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-register',template:/*ion-inline-start:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/register/register.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-content padding>\n  <ion-item>\n    <ion-label floating>Correo Electrónico</ion-label>\n    <ion-input [(ngModel)]="user.email" type="email" autocorrect="off" autocapitalize="none"\n    name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label floating>Contraseña</ion-label>\n    <ion-input [(ngModel)]="user.password" type="password"\n    name="password" required minlength="4"></ion-input>\n  </ion-item>\n\n\n  <button ion-button (click)="register(user)">Register</button>\n\n  </ion-content>\n\n</ion-content>\n'/*ion-inline-end:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/register/register.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color = \'primary\'>\n    <ion-title>Login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n<ion-item>\n  <ion-label floating>Correo Electrónico</ion-label>\n  <ion-input type="text" [(ngModel)]="user.email"></ion-input>\n</ion-item>\n<ion-item>\n  <ion-label floating>Contraseña</ion-label>\n  <ion-input type="password" [(ngModel)]="user.password"></ion-input>\n</ion-item>\n\n<button ion-button (click)="login(user)">Login</button>\n<button ion-button (click)="register()">Register</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/login/login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_2__services_authService__["a" /* AuthService */]])
-    ], RegisterPage);
-    return RegisterPage;
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_3__services_authService__["a" /* AuthService */]])
+    ], LoginPage);
+    return LoginPage;
 }());
 
-//# sourceMappingURL=register.js.map
+//# sourceMappingURL=login.js.map
 
 /***/ })
 

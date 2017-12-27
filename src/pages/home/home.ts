@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-
+import { Observable } from "rxjs/Observable";
 import { AngularFireAuth } from "angularfire2/auth";
 import { MenuController } from 'ionic-angular';
+
+import { Admin } from './../../models/admin.model';
 import { AuthService } from './../../services/authService';
+import { AdminsService } from './../../services/adminsService';
+
 
 @IonicPage()
 @Component({
@@ -12,6 +16,8 @@ import { AuthService } from './../../services/authService';
 })
 export class HomePage {
 
+  adminsList$: Observable<Admin[]>;
+
   constructor(
     private afAuth: AngularFireAuth,
     private toast: ToastController,
@@ -19,7 +25,18 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public authService: AuthService,
-  ) {}
+    public adminsService: AdminsService,
+  ) {
+    // lista de admins en la bd
+    this.adminsList$ = this.adminsService.getAdmins().snapshotChanges().map(
+      changes => {
+        return changes.map(c =>({
+            key: c.payload.key,
+            ...c.payload.val(),
+        }))
+      }
+    )
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
