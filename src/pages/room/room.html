@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title> DifTel </ion-title>
+    <ion-title> {{room?.titulo}} </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -54,3 +54,7 @@
 </ion-card>
 
 </ion-content>
+
+<ion-fab right bottom>
+    <button ion-fab navPush="EditRoomPage" [navParams]="{room: this.room}"><ion-icon name="edit"></ion-icon></button>
+  </ion-fab>

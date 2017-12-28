@@ -31,7 +31,7 @@ export class AddRoomPage {
   addRoom(room: Room){
     this.rooms.addRoom(room).then(ref => {
       this.toast.show(`${room.titulo} added!`);
-      this.navCtrl.setRoot("RoomsPage", { key: ref.key });
+      this.navCtrl.setRoot("HomePage");
     });
   }
 

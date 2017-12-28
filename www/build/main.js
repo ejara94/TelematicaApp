@@ -1,12 +1,12 @@
-webpackJsonp([7],{
+webpackJsonp([8],{
 
-/***/ 113:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminsService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -39,52 +39,6 @@ var AdminsService = (function () {
 
 /***/ }),
 
-/***/ 136:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomsService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(103);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var RoomsService = (function () {
-    function RoomsService(db) {
-        this.db = db;
-        this.roomsRef = this.db.list("rooms");
-    }
-    RoomsService.prototype.getRooms = function () {
-        return this.roomsRef;
-    };
-    RoomsService.prototype.addRoom = function (room) {
-        return this.roomsRef.push(room);
-    };
-    RoomsService.prototype.editRoom = function (room) {
-        return this.roomsRef.update(room.key, room);
-    };
-    RoomsService.prototype.removeRoom = function (room) {
-        return this.roomsRef.remove(room.key);
-    };
-    RoomsService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
-    ], RoomsService);
-    return RoomsService;
-}());
-
-//# sourceMappingURL=rooms.service.js.map
-
-/***/ }),
-
 /***/ 148:
 /***/ (function(module, exports) {
 
@@ -108,31 +62,35 @@ webpackEmptyAsyncContext.id = 148;
 var map = {
 	"../pages/add-room/add-room.module": [
 		454,
-		4
+		5
 	],
 	"../pages/edit-room/edit-room.module": [
 		455,
-		3
+		4
 	],
 	"../pages/home/home.module": [
 		456,
-		6
+		7
 	],
 	"../pages/login/login.module": [
 		457,
+		3
+	],
+	"../pages/note/note.module": [
+		458,
 		2
 	],
 	"../pages/register/register.module": [
-		458,
+		459,
 		1
 	],
 	"../pages/room/room.module": [
-		459,
+		460,
 		0
 	],
 	"../pages/rooms/rooms.module": [
-		460,
-		5
+		461,
+		6
 	]
 };
 function webpackAsyncContext(req) {
@@ -196,7 +154,7 @@ var ListPage = (function () {
     };
     ListPage = ListPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-list',template:/*ion-inline-start:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>List</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-start></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-end>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/list/list.html"*/
+            selector: 'page-list',template:/*ion-inline-start:"/home/paco/Documentos/bryan/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>List</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-start></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-end>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/paco/Documentos/bryan/src/pages/list/list.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], ListPage);
@@ -255,9 +213,10 @@ var ToastService = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_authService__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_adminsService__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_authService__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_adminsService__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_rooms_rooms_service__ = __webpack_require__(76);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -281,8 +240,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
-    function HomePage(afAuth, toast, menuCtrl, navCtrl, navParams, authService, adminsService) {
+    function HomePage(afAuth, toast, menuCtrl, navCtrl, navParams, authService, adminsService, rooms) {
         this.afAuth = afAuth;
         this.toast = toast;
         this.menuCtrl = menuCtrl;
@@ -290,8 +250,13 @@ var HomePage = (function () {
         this.navParams = navParams;
         this.authService = authService;
         this.adminsService = adminsService;
+        this.rooms = rooms;
         // lista de admins en la bd
         this.adminsList$ = this.adminsService.getAdmins().snapshotChanges().map(function (changes) {
+            return changes.map(function (c) { return (__assign({ key: c.payload.key }, c.payload.val())); });
+        });
+        this.roomsList$ = this.rooms.getRooms().snapshotChanges().map(function (changes) {
+            console.log(changes);
             return changes.map(function (c) { return (__assign({ key: c.payload.key }, c.payload.val())); });
         });
     }
@@ -312,23 +277,32 @@ var HomePage = (function () {
                 }).present();
             }
         });
+        this.adminsList$.forEach(function (list) {
+            list.forEach(function (element) {
+                if (element.uId === _this.authService.currentUser_Id) {
+                    _this.isAdmin = true;
+                }
+            });
+        });
+        this.roomsList$.forEach(function (list) {
+            list.forEach(function (element) {
+                if (element.key === _this.authService.currentUser_Id) {
+                    _this.isAdmin = true;
+                }
+            });
+        });
     };
     HomePage.prototype.verSalas = function () {
         this.navCtrl.push('RoomsPage'); //te lleva a la página de registro
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/home/home.html"*/'\n<ion-header>\n\n  <ion-navbar color="azul-1">\n    <ion-title> HomePage bienvenido {{authService.currentUser}} </ion-title>\n  </ion-navbar>\n\n  <ion-toolbar color="plomo-2">\n    <button ion-button (click)="verSalas()"> Ver Salas </button>\n  </ion-toolbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-card>\n    <img src="assets/imgs/diftel.jpg"/>\n    <div class="card-title"> DifTel </div>\n    <div class="card-subtitle"> Puertas Abiertas 2016 </div>\n    <ion-buttons end>\n      <button navPush="RoomPage" ion-button> ir </button>\n    </ion-buttons>\n  </ion-card>\n\n  <ion-card>\n    <img src="assets/imgs/ceeTel.jpg"/>\n    <div class="card-title"> CEETel </div>\n    <div class="card-subtitle"> Centro de alumnos 2016 </div>\n  </ion-card>\n\n\n</ion-content>\n\n\n<ion-footer no-border>\n    <ion-toolbar color="plomo-3">\n    <ion-title>I\'m a footer</ion-title>\n  </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/paco/Documentos/bryan/src/pages/home/home.html"*/'\n<ion-header>\n\n  <ion-navbar color="azul-1">\n    <ion-title> HomePage bienvenido {{authService.currentUser}} </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngFor="let room of roomsList$ | async"\n    detail-push navPush="RoomPage" [navParams]="{room: room}">\n      <ion-card>\n      <!--- AGREGAR IMAGEN DEL ROOM--->\n      <div class="card-title">{{room.titulo}}</div>\n      </ion-card>\n    </ion-item>\n  </ion-list>\n  \n</ion-content>\n\n\n<ion-footer no-border [hidden]="!isAdmin">\n    <ion-toolbar color="plomo-3">\n    <ion-title>I\'m a footer</ion-title>\n  </ion-toolbar>\n</ion-footer>\n\n<ion-fab right bottom>\n    <button ion-fab navPush="AddRoomPage"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n'/*ion-inline-end:"/home/paco/Documentos/bryan/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__services_authService__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_adminsService__["a" /* AdminsService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__services_authService__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_authService__["a" /* AuthService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__services_adminsService__["a" /* AdminsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_adminsService__["a" /* AdminsService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__services_rooms_rooms_service__["a" /* RoomsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_rooms_rooms_service__["a" /* RoomsService */]) === "function" && _h || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -342,9 +316,9 @@ var HomePage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_authService__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_rooms_rooms_service__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_adminsService__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_authService__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_rooms_rooms_service__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_adminsService__ = __webpack_require__(114);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -389,22 +363,25 @@ var RoomsPage = (function () {
         this.adminsList$.forEach(function (list) {
             list.forEach(function (element) {
                 if (element.uId === _this.authService.currentUser_Id) {
-                    _this.i = true;
+                    _this.isAdminInRoom = true;
                 }
             });
         });
     };
     RoomsPage.prototype.isAdmin = function () {
-        console.log(this.i);
+        console.log(this.isAdminInRoom);
     };
     RoomsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-rooms',template:/*ion-inline-start:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/rooms/rooms.html"*/'\n<ion-header>\n\n  <ion-navbar color="azul-1">\n    <ion-title> Salas </ion-title>\n    <ion-buttons end>\n      <button navPush="AddRoomPage" ion-button>\n        <ion-icon name="add">  </ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-list-header> Lista de Salas </ion-list-header>\n    <ion-item *ngFor="let room of roomsList$ | async"\n    detail-push navPush="EditRoomPage" [navParams]="{room: room}">\n      {{room.titulo}}\n    </ion-item>\n  </ion-list>\n  <button ion-button (click)="isAdmin()"> Soy admin ? </button>\n</ion-content>\n'/*ion-inline-end:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/pages/rooms/rooms.html"*/,
+            selector: 'page-rooms',template:/*ion-inline-start:"/home/paco/Documentos/bryan/src/pages/rooms/rooms.html"*/'\n<ion-header>\n\n  <ion-navbar color="azul-1">\n    <ion-title> Salas </ion-title>\n    <ion-buttons end>\n      <button navPush="AddRoomPage" ion-button>\n        <ion-icon name="add">  </ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-list-header> Lista de Salas </ion-list-header>\n    <ion-item *ngFor="let room of roomsList$ | async"\n    detail-push navPush="EditRoomPage" [navParams]="{room: room}">\n      {{room.titulo}}\n    </ion-item>\n  </ion-list>\n  <button ion-button (click)="isAdmin()"> Soy admin ? </button>\n</ion-content>\n'/*ion-inline-end:"/home/paco/Documentos/bryan/src/pages/rooms/rooms.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_rooms_rooms_service__["a" /* RoomsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_rooms_rooms_service__["a" /* RoomsService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__services_authService__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_authService__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_adminsService__["a" /* AdminsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_adminsService__["a" /* AdminsService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__services_rooms_rooms_service__["a" /* RoomsService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_authService__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_adminsService__["a" /* AdminsService */]])
     ], RoomsPage);
     return RoomsPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=rooms.js.map
@@ -437,14 +414,15 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(285);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__(452);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_firebase_config__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_authService__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_adminsService__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_rooms_rooms_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_authService__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_adminsService__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_rooms_rooms_service__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_toast_toast_service__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_note_note_service__ = __webpack_require__(468);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -468,6 +446,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -486,6 +465,7 @@ var AppModule = (function () {
                         { loadChildren: '../pages/edit-room/edit-room.module#EditRoomPageModule', name: 'EditRoomPage', segment: 'edit-room', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/note/note.module#NotePageModule', name: 'NotePage', segment: 'note', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/room/room.module#RoomPageModule', name: 'RoomPage', segment: 'room', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/rooms/rooms.module#RoomsPageModule', name: 'RoomsPage', segment: 'rooms', priority: 'low', defaultHistory: [] }
@@ -509,6 +489,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_14__services_toast_toast_service__["a" /* ToastService */],
                 __WEBPACK_IMPORTED_MODULE_11__services_authService__["a" /* AuthService */],
                 __WEBPACK_IMPORTED_MODULE_12__services_adminsService__["a" /* AdminsService */],
+                __WEBPACK_IMPORTED_MODULE_15__services_note_note_service__["a" /* NoteService */],
             ]
         })
     ], AppModule);
@@ -580,7 +561,7 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"/home/paco/Escritorio/branch bryan/TelematicaApp/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/paco/Documentos/bryan/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"/home/paco/Documentos/bryan/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -608,13 +589,106 @@ var FIREBASE_CONFIG = {
 
 /***/ }),
 
+/***/ 468:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NoteService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(104);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NoteService = (function () {
+    function NoteService(db) {
+        this.db = db;
+        this.noteRef = this.db.list("publicaciones");
+    }
+    NoteService.prototype.getNotes = function () {
+        return this.noteRef;
+    };
+    NoteService.prototype.addNote = function (note) {
+        return this.noteRef.push(note);
+    };
+    NoteService.prototype.editNote = function (note) {
+        return this.noteRef.update(note.key, note);
+    };
+    NoteService.prototype.removeNote = function (note) {
+        return this.noteRef.remove(note.key);
+    };
+    NoteService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
+    ], NoteService);
+    return NoteService;
+    var _a;
+}());
+
+//# sourceMappingURL=note.service.js.map
+
+/***/ }),
+
 /***/ 76:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(104);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var RoomsService = (function () {
+    function RoomsService(db) {
+        this.db = db;
+        this.roomsRef = this.db.list("rooms");
+    }
+    RoomsService.prototype.getRooms = function () {
+        return this.roomsRef;
+    };
+    RoomsService.prototype.addRoom = function (room) {
+        return this.roomsRef.push(room);
+    };
+    RoomsService.prototype.editRoom = function (room) {
+        return this.roomsRef.update(room.key, room);
+    };
+    RoomsService.prototype.removeRoom = function (room) {
+        return this.roomsRef.remove(room.key);
+    };
+    RoomsService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], RoomsService);
+    return RoomsService;
+}());
+
+//# sourceMappingURL=rooms.service.js.map
+
+/***/ }),
+
+/***/ 77:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(78);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

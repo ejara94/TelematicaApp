@@ -17,6 +17,7 @@ import { AuthService } from "./../services/authService";
 import { AdminsService } from "./../services/adminsService";
 import { RoomsService } from "./../services/rooms/rooms.service";
 import { ToastService } from "./../services/toast/toast.service";
+import { NoteService } from "./../services/note/note.service";
 
 
 
@@ -47,6 +48,7 @@ import { ToastService } from "./../services/toast/toast.service";
     ToastService,
     AuthService,
     AdminsService,
+    NoteService,
   ]
 })
 export class AppModule {}

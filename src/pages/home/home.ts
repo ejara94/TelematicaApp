@@ -7,6 +7,8 @@ import { MenuController } from 'ionic-angular';
 import { Admin } from './../../models/admin.model';
 import { AuthService } from './../../services/authService';
 import { AdminsService } from './../../services/adminsService';
+import { RoomsService } from "./../../services/rooms/rooms.service";
+import { Room } from "./../../models/room/room.model";
 
 
 @IonicPage()
@@ -17,6 +19,8 @@ import { AdminsService } from './../../services/adminsService';
 export class HomePage {
 
   adminsList$: Observable<Admin[]>;
+  roomsList$: Observable<Room[]>;
+  isAdmin:boolean;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -26,10 +30,20 @@ export class HomePage {
     public navParams: NavParams,
     public authService: AuthService,
     public adminsService: AdminsService,
+    private rooms: RoomsService,
   ) {
     // lista de admins en la bd
     this.adminsList$ = this.adminsService.getAdmins().snapshotChanges().map(
       changes => {
+        return changes.map(c =>({
+            key: c.payload.key,
+            ...c.payload.val(),
+        }))
+      }
+    )
+    this.roomsList$ = this.rooms.getRooms().snapshotChanges().map(
+      changes => {
+        console.log(changes);
         return changes.map(c =>({
             key: c.payload.key,
             ...c.payload.val(),
@@ -55,6 +69,21 @@ export class HomePage {
         }).present();
       }
     });
+    this.adminsList$.forEach(list => {
+      list.forEach(element =>{
+        if(element.uId === this.authService.currentUser_Id){
+          this.isAdmin = true;
+        }
+      });
+    });
+    this.roomsList$.forEach(list => {
+      list.forEach(element =>{
+        if(element.key === this.authService.currentUser_Id){
+          this.isAdmin = true;
+        }
+      });
+    });
+
   }
 
   verSalas() {

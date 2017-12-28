@@ -18,7 +18,7 @@ export class RoomsPage {
 
   roomsList$: Observable<Room[]>;
   adminsList$: Observable<Admin[]>;
-  i: boolean;
+  isAdminInRoom: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -52,13 +52,13 @@ export class RoomsPage {
     this.adminsList$.forEach(list => {
       list.forEach(element =>{
         if(element.uId === this.authService.currentUser_Id){
-          this.i = true;
+          this.isAdminInRoom = true;
         }
       });
     });
   }
 
   isAdmin(){ // eventualmente debe retornar un bool que seria i
-    console.log(this.i);
+    console.log(this.isAdminInRoom);
   }
 }

@@ -5,36 +5,30 @@
     <ion-title> HomePage bienvenido {{authService.currentUser}} </ion-title>
   </ion-navbar>
 
-  <ion-toolbar color="plomo-2">
-    <button ion-button (click)="verSalas()"> Ver Salas </button>
-  </ion-toolbar>
-
 </ion-header>
 
 
 <ion-content padding>
 
-  <ion-card>
-    <img src="assets/imgs/diftel.jpg"/>
-    <div class="card-title"> DifTel </div>
-    <div class="card-subtitle"> Puertas Abiertas 2016 </div>
-    <ion-buttons end>
-      <button navPush="RoomPage" ion-button> ir </button>
-    </ion-buttons>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/imgs/ceeTel.jpg"/>
-    <div class="card-title"> CEETel </div>
-    <div class="card-subtitle"> Centro de alumnos 2016 </div>
-  </ion-card>
-
-
+  <ion-list>
+    <ion-item *ngFor="let room of roomsList$ | async"
+    detail-push navPush="RoomPage" [navParams]="{room: room}">
+      <ion-card>
+      <!--- AGREGAR IMAGEN DEL ROOM--->
+      <div class="card-title">{{room.titulo}}</div>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  
 </ion-content>
 
 
-<ion-footer no-border>
+<ion-footer no-border [hidden]="!isAdmin">
     <ion-toolbar color="plomo-3">
     <ion-title>I'm a footer</ion-title>
   </ion-toolbar>
 </ion-footer>
+
+<ion-fab right bottom>
+    <button ion-fab navPush="AddRoomPage"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
